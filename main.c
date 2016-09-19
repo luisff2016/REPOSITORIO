@@ -17,6 +17,7 @@ int codCadastro;
 TESTUDANTE aluno[50];
 TESTUDANTE est;
 
+//estou dentro.
 /* funcoes auxiliares */
 void menu();
 int buscaEstudante();
@@ -40,12 +41,12 @@ printf ("1. Adicione registro de estudante\n");
 printf ("2. Apague registro de estudante\n");
 printf ("3. Atualize registro de estudante\n");
 printf ("4. Ver todos os registros\n");
-printf ("5. Calcular a média de um estudante\n");
-printf ("6. Mostrar o estudante que conseguiu a maior média\n");
-printf ("7. Mostrar o estudante com a menor média\n");
-printf ("8. Encontrar estudante pela matrícula\n");
+printf ("5. Calcular a mÃ©dia de um estudante\n");
+printf ("6. Mostrar o estudante que conseguiu a maior mÃ©dia\n");
+printf ("7. Mostrar o estudante com a menor mÃ©dia\n");
+printf ("8. Encontrar estudante pela matrÃ­cula\n");
 printf ("9. Encontrar estudante pelo nome\n");
-printf ("10. Mostrar os registros ordenados pela média\n");
+printf ("10. Mostrar os registros ordenados pela mÃ©dia\n");
 printf ("0. Sair do programa\n");
 }
 
@@ -70,9 +71,9 @@ void lerAluno(){
     scanf("%d", &est.cpf);
     int i = buscaEstudante(est);
     if ( i != -1 )
-        printf("\nMatrícula já cadastrada\n");
+        printf("\nMatrÃ­cula jÃ¡ cadastrada\n");
     else if (codCadastro == nroMaxAlunos)
-        printf("\nNúmero máximo de estudantes ultrapassado\n");
+        printf("\nNÃºmero mÃ¡ximo de estudantes ultrapassado\n");
         else {
             printf("\nDigite o nome do aluno:\n");
             scanf("%s", est.nome);
@@ -138,11 +139,11 @@ void altRegistro(){
     }
 }
 
-/* Menu de seleção */
+/* Menu de seleÃ§Ã£o */
 void addMenu(){
     menu();
     int opcao;
-    printf("\nDigite a opção desejada do MENU\n\n");
+    printf("\nDigite a opÃ§Ã£o desejada do MENU\n\n");
     scanf("%d", &opcao);
     while (opcao != 0){
             switch (opcao){
@@ -160,7 +161,7 @@ void addMenu(){
                 default: printf("\n DIGITE UMA OPCAO VALIDA!\n\n"); break;
                 }
             menu();
-            printf("\n Digite a opção desejada do MENU\n\n");
+            printf("\n Digite a opÃ§Ã£o desejada do MENU\n\n");
             scanf("%d", &opcao);
             }
 }
