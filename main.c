@@ -3,6 +3,8 @@
 #include <locale.h>
 #include <conio.h>
 
+/*git repositorio 20092016 0628*/
+
 /*definindo variavel para registro de estudantes*/
 typedef struct {
 int cpf;
