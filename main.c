@@ -39,6 +39,7 @@ void maiorMedia();
 void menorMedia();
 void encNome();
 int tamNome(int i);
+void verMediaOrdem();
 
 /* funcao principal */
 int main()
@@ -208,8 +209,9 @@ int addMenu()
                 case 7: menorMedia(); break;
                 case 8: verMatAluno(); break;
                 case 9: encNome(); break;
-                case 10: verMedia(); break;
-                default: printf("\n DIGITE UMA OPCAO VALIDA!\n\n"); break;
+                case 10: verMediaOrdem(); break;
+                default: { system("cls");
+                         printf("\n DIGITE UMA OPCAO VALIDA!\n\n"); } break;
             }
             menu();
             printf("\n Digite a opção desejada do MENU\n\n");
@@ -322,4 +324,10 @@ int tamNome(int i)
     while (aluno[i].nome[j] != '\0')
         j++;
     return j;
+}
+
+void verMediaOrdem()
+{
+    ordemMedia();
+    verTodos();
 }
