@@ -70,11 +70,12 @@ void dadosAluno()
 {
     printf("\nDigite o nome do aluno:\n");
     /*scanf("%[^\n]", est.nome);*/
-    scanf("%s", est.nome);
+    fflush(stdin);
+    gets(est.nome);
     printf("\nDigite o sexo: H ou M\n");
     est.sexo = getche();
     /*scanf("%c", est.sexo); apresenta erro na execucao*/
-    printf("\nDigite as notas:\n");
+    printf("\nDigite as 3 notas:\n");
     int i;
     for (i=0; i<3; i++)
         scanf("%f", &est.notas[i]);
@@ -93,21 +94,23 @@ void lerAluno()
         printf("\nMatrícula já cadastrada\n");
     else if (codCadastro == nroMaxAlunos)
         printf("\nNúmero máximo de estudantes ultrapassado\n");
-        else dadosAluno();
+        else dadosAluno(); {
     gravarAluno(est, codCadastro);
-    printf("\nCadastrado realizado com sucesso\n");
+    system("cls");
+    printf("\nCadastrado realizado com sucesso\n\n\n"); }
 }
 
 void verAluno(int i)
 {
+        printf("\nNOME: %s  ", aluno[i].nome);
         printf("CPF: %d  ", aluno[i].cpf);
-        printf("NOME: %s  ", aluno[i].nome);
         printf("SEXO: %c\n", aluno[i].sexo);
         printf("NOTA 1: %.2f ", aluno[i].notas[0]);
         printf("NOTA 2: %.2f ", aluno[i].notas[1]);
         printf("NOTA 3: %.2f ", aluno[i].notas[2]);
         printf("MEDIA: %.2f\n", aluno[i].media);
-        printf("Projeto: %.2f\n", aluno[i].projeto);
+        printf("Projeto: %.2f\n\n", aluno[i].projeto);
+        printf("(pressione qualquer tecla)\n\n");
         getch();
 }
 
@@ -116,6 +119,8 @@ void verTodos()
     int i;
     for (i=0 ; i<codCadastro ; i++)
         verAluno(i);
+    system("cls");
+    printf("\nTodos os registros foram mostrados.\n\n\n");
 }
 
 void apagaRegistro()
@@ -134,9 +139,11 @@ void apagaRegistro()
                 codCadastro--;
             }
         }
-        printf("\n Registro apagado \n");
+        system("cls");
+        printf("\n Registro apagado \n\n\n");
     }
-    else printf("\n Registro nao existe\n");
+    else { system("cls");
+         printf("\n Registro nao existe\n\n\n"); }
 }
 
 
@@ -144,11 +151,20 @@ void altRegistro()
 {
     printf("\n Qual matricula deseja alterar?\n\n");
     scanf("%d", &est.cpf);
-    int i;
+    int i, checkalt=0;
     for (i=0; i<codCadastro; i++){
-        if (aluno[i].cpf == est.cpf)
+        if (aluno[i].cpf == est.cpf) {
             dadosAluno();
+            checkalt++; }
         }
+    if(checkalt==0){
+        system("cls");
+        printf("\nEssa matrícula não existe.\n\n\n");
+    }
+    else {
+        system("cls");
+        printf("\nRegistro alterado com sucesso.\n\n\n");
+    }
 }
 
 /* exibe menu de opcoes */
@@ -157,6 +173,7 @@ void menu()
 printf("============================================\n");
 printf("\t\tMenu\t\t\n");
 printf("============================================\n");
+printf("(Obs: O Número de matricula é o cpf do aluno.)\n");
 printf ("1. Adicione registro de estudante\n");
 printf ("2. Apague registro de estudante\n");
 printf ("3. Atualize registro de estudante\n");
@@ -186,7 +203,7 @@ int addMenu()
                 case 2: apagaRegistro(); break;
                 case 3: altRegistro(); break;
                 case 4: verTodos(); break;
-                case 5: calcMedia(); break;
+                case 5: verMedia(); break;
                 case 6: maiorMedia(); break;
                 case 7: menorMedia(); break;
                 case 8: verMatAluno(); break;
@@ -210,11 +227,14 @@ void verMatAluno()
         {
         for (i=0; i<codCadastro; i++)
             {
-            if (aluno[i].cpf == est.cpf)
+            if (aluno[i].cpf == est.cpf) {
                 verAluno(i);
+                system("cls");
+                printf("\nRegistro visualizado.\n\n\n"); }
             }
         }
-    else printf("\n Registro inexistente\n");
+    else { system("cls");
+        printf("\n Registro inexistente\n\n\n"); }
 }
 
 
@@ -230,8 +250,20 @@ void calcMedia()
 
 void verMedia()
 {
-    ordemMedia();
-    verTodos();
+    printf("\n Digite a matrícula do aluno.\n");
+    scanf("%d", &est.cpf);
+    int i = buscaEstudante(est);
+    if ( i != -1 )
+        {
+        for (i=0; i<codCadastro; i++)
+            {
+            if (aluno[i].cpf == est.cpf){
+                system("cls");
+                printf("\nMEDIA DO ALUNO %s: %.2f\n\n\n", aluno[i].nome, aluno[i].media); }
+            }
+        }
+    else { system("cls");
+        printf("\n Registro inexistente\n\n\n"); }
 }
 
 void ordemMedia()
@@ -255,13 +287,15 @@ void maiorMedia()
 {
     ordemMedia();
     int i = codCadastro-1;
-    printf ("Aluno %s tem a maior media %.2f \n", aluno[i].nome, aluno[i].media);
+    system("cls");
+    printf ("\nAluno %s tem a maior media: %.2f \n\n\n", aluno[i].nome, aluno[i].media);
 }
 
 void menorMedia()
 {
     ordemMedia();
-    printf ("Aluno %s tem a menor media %.2f \n", aluno[0].nome, aluno[0].media);
+    system("cls");
+    printf ("\nAluno %s tem a menor media: %.2f \n\n\n", aluno[0].nome, aluno[0].media);
 }
 
 void encNome()
