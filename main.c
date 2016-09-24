@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <conio.h>
+#include <string.h>
+
+/*  -Luis Fernando Feitosa.
+    -Wendhio Thalison Neres dos Santos.
+    -Rodrigo Oliveira Santos.
+~~~~~~~~ PROJETO DE AQUECIMENTO ~~~~~~~~
 
 /*definindo variavel para registro de estudantes*/
 typedef struct
@@ -74,8 +80,7 @@ void dadosAluno()
     fflush(stdin);
     gets(est.nome);
     printf("\nDigite o sexo: H ou M\n");
-    est.sexo = getche();
-    /*scanf("%c", est.sexo); apresenta erro na execucao*/
+    scanf("%c", &est.sexo);
     printf("\nDigite as 3 notas:\n");
     int i;
     for (i=0; i<3; i++)
@@ -95,10 +100,10 @@ void lerAluno()
         printf("\nMatrícula já cadastrada\n");
     else if (codCadastro == nroMaxAlunos)
         printf("\nNúmero máximo de estudantes ultrapassado\n");
-        else dadosAluno(); {
-    gravarAluno(est, codCadastro);
-    system("cls");
-    printf("\nCadastrado realizado com sucesso\n\n\n"); }
+    else {  dadosAluno();
+            gravarAluno(est, codCadastro);
+            system("cls");
+            printf("\nCadastrado realizado com sucesso\n\n\n"); }
 }
 
 void verAluno(int i)
@@ -303,18 +308,23 @@ void menorMedia()
 void encNome()
 {
     printf("\n Digite nome do aluno:\n");
-    scanf("%s", est.nome);
-    int i,h;
+    fflush(stdin);
+    gets(est.nome);
+    int i, tamStr, check=0;
+    tamStr=strlen(est.nome);
     for (i=0; i<codCadastro; i++)
     {
-        h=tamNome(i);
-        int j=0;
-        while ( est.nome[j] == aluno[i].nome[j] &&
-           est.nome[j] != '\0' &&
-           aluno[i].nome[j] != '\0' )
-           j++;
-        if (j==h) verAluno(j);
-        else printf("\n Registro inexistente\n");
+        if(memcmp(est.nome, aluno[i].nome, tamStr)==0){
+            verAluno(i);
+            check++;
+        }
+    }
+    if(check==0){
+        system("cls");
+        printf("\nRegistro inexistente.\n\n\n"); }
+    else {
+        system("cls");
+        printf("\nRegistro visualizado com sucesso.\n\n\n");
     }
 }
 
