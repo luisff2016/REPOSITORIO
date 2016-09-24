@@ -156,6 +156,7 @@ void altRegistro()
     for (i=0; i<codCadastro; i++){
         if (aluno[i].cpf == est.cpf) {
             dadosAluno();
+            aluno[i]=est;
             checkalt++; }
         }
     if(checkalt==0){
