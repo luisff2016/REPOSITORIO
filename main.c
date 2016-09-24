@@ -137,14 +137,9 @@ void apagaRegistro()
     if ( i != -1 )
     {
         int j;
-        for (j=0; j<codCadastro; j++)
-        {
-            if (aluno[j].cpf == est.cpf)
-            {
-                aluno[i]=aluno[codCadastro];
-                codCadastro--;
-            }
-        }
+        for (j=i; j<codCadastro; j++)
+            aluno[j]=aluno[j+1];
+        codCadastro--;
         system("cls");
         printf("\n Registro apagado \n\n\n");
     }
