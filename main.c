@@ -172,21 +172,21 @@ void altRegistro()
 /* exibe menu de opcoes */
 void menu()
 {
-printf("============================================\n");
-printf("\t\tMenu\t\t\n");
-printf("============================================\n");
-printf("(Obs: O Número de matricula é o cpf do aluno.)\n");
-printf ("1. Adicione registro de estudante\n");
-printf ("2. Apague registro de estudante\n");
-printf ("3. Atualize registro de estudante\n");
-printf ("4. Ver todos os registros\n");
-printf ("5. Calcular a média de um estudante\n");
-printf ("6. Mostrar o estudante que conseguiu a maior média\n");
-printf ("7. Mostrar o estudante com a menor média\n");
-printf ("8. Encontrar estudante pela matrícula\n");
-printf ("9. Encontrar estudante pelo nome\n");
-printf ("10. Mostrar os registros ordenados pela média\n");
-printf ("0. Sair do programa\n");
+printf("\t============================================\n");
+printf("\t\t\tMenu\t\t\n");
+printf("\t============================================\n");
+printf("\t(Obs: O Número de matricula é o cpf do aluno.)\n");
+printf ("\t1. Adicione registro de estudante\n");
+printf ("\t2. Apague registro de estudante\n");
+printf ("\t3. Atualize registro de estudante\n");
+printf ("\t4. Ver todos os registros\n");
+printf ("\t5. Calcular a média de um estudante\n");
+printf ("\t6. Mostrar o estudante que conseguiu a maior média\n");
+printf ("\t7. Mostrar o estudante com a menor média\n");
+printf ("\t8. Encontrar estudante pela matrícula\n");
+printf ("\t9. Encontrar estudante pelo nome\n");
+printf ("\t10. Mostrar os registros ordenados pela média\n");
+printf ("\t\t0. Sair do programa\n");
 }
 
 /* Menu de seleção */
